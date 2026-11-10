@@ -4,3 +4,16 @@
 
 [functions]
   node_bundler = "esbuild"
+
+# Route the friendly API URLs used by the website to Netlify Functions.
+[[redirects]]
+  from = "/api/upload"
+  to = "/.netlify/functions/upload"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/retrieve"
+  to = "/.netlify/functions/retrieve"
+  status = 200
+  force = true
