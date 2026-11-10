@@ -1,0 +1,10 @@
+{
+  "name": "listly-cloud-beta1",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Listly Cloud Beta Test 1 - private TXT save upload and recovery",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0"
+  }
+}

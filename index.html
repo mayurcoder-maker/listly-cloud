@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101525">
+  <title>Listly Cloud</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0c1020;--panel:#151c30;--panel2:#1c2540;--text:#f4f7ff;--muted:#a8b2cc;--line:#303b59;--blue:#4d8dff;--cyan:#48d8d0;--good:#5fe0a0;--bad:#ff7d8a}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#24336b 0,transparent 38%),radial-gradient(ellipse at 100% 20%,#173c51 0,transparent 32%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+    .wrap{width:min(980px,calc(100% - 32px));margin:auto;padding:42px 0 56px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;font-size:24px;font-weight:900;color:#081326;box-shadow:0 8px 28px #287dd955}.brand h1{font-size:22px;margin:0;letter-spacing:-.5px}.brand p{margin:0;color:var(--muted);font-size:13px}.pill{border:1px solid #3a5276;color:#b9d3ff;background:#1a2944;padding:7px 12px;border-radius:99px;font-size:12px;font-weight:700}
+    .hero{margin-bottom:28px}.hero h2{font-size:clamp(30px,6vw,48px);line-height:1.08;letter-spacing:-1.6px;margin:0 0 12px}.hero h2 span{background:linear-gradient(90deg,#77aaff,#58e0d4);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:650px;margin:0}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:linear-gradient(180deg,#19223aee,#121a2dee);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 18px 55px #0003;min-width:0}.card h3{margin:0 0 5px;font-size:20px}.sub{margin:0 0 18px;color:var(--muted);font-size:14px}.drop{border:1.5px dashed #52658c;border-radius:16px;padding:24px 14px;text-align:center;background:#10182b;transition:.2s}.drop.drag{border-color:var(--cyan);background:#122b36}.drop .emoji{font-size:32px}.drop strong{display:block;margin:7px 0 2px}.drop small{color:var(--muted)}input[type=file]{display:none}.file-label{display:inline-flex;margin-top:14px;background:#26395d;border:1px solid #496b9e;border-radius:11px;padding:10px 15px;cursor:pointer;font-weight:700;font-size:14px}
+    .btn{border:0;border-radius:12px;padding:12px 16px;font:700 15px system-ui;cursor:pointer;background:linear-gradient(100deg,var(--blue),#46bfc9);color:#071426;box-shadow:0 8px 24px #287dd933;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}.wide{width:100%;margin-top:15px}.field{width:100%;border:1px solid #465575;background:#0d1425;border-radius:12px;color:var(--text);padding:13px 14px;font:600 16px system-ui;outline:none}.field:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4d8dff22}.code{font:800 clamp(23px,5vw,32px)/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:2px;color:#91e9dc;overflow-wrap:anywhere}.result{margin-top:16px;padding:15px;border-radius:14px;background:#0d1928;border:1px solid #28534e;display:none}.result.show{display:block}.result p{margin:0 0 8px;color:var(--muted);font-size:13px}.code-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.copy{background:#26395d;border:1px solid #496b9e;color:white;border-radius:9px;padding:8px 11px;font-weight:700;cursor:pointer}.status{min-height:22px;margin:12px 0 0;color:var(--muted);font-size:13px}.status.ok{color:var(--good)}.status.err{color:var(--bad)}.news{margin-top:18px;display:flex;gap:14px;align-items:flex-start}.news-icon{font-size:24px}.news h3{font-size:16px;margin:0 0 3px}.news p{font-size:13px;color:var(--muted);margin:0}.footer{text-align:center;color:#7f8aa5;font-size:12px;margin-top:28px}.footer a{color:#9fc4ff;text-decoration:none}
+    @media(max-width:720px){.wrap{padding-top:25px}.top{align-items:flex-start}.pill{white-space:nowrap}.grid{grid-template-columns:1fr}.card{padding:19px}.hero h2{letter-spacing:-1px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top"><div class="brand"><div class="logo">L</div><div><h1>Listly Cloud</h1><p>Your lists, wherever you go.</p></div></div><div class="pill">BETA TEST 1</div></header>
+    <section class="hero"><h2>Your shopping lists.<br><span>Safely carried over.</span></h2><p>Upload a Listly save file to get a recovery code. Enter that code on another device to retrieve your file.</p></section>
+    <section class="grid">
+      <article class="card">
+        <h3>☁️ Upload a save file</h3><p class="sub">Turn your Listly .txt file into a recovery code.</p>
+        <div class="drop" id="drop"><div class="emoji">📄</div><strong id="fileName">Drop your save file here</strong><small>TXT files only · Maximum 256 KB</small><label class="file-label" for="file">Choose .txt file</label><input id="file" type="file" accept=".txt,text/plain"></div>
+        <button class="btn wide" id="uploadBtn" disabled>Upload and generate code</button>
+        <div class="result" id="uploadResult"><p>Your Listly recovery code</p><div class="code-row"><div class="code" id="newCode"></div><button class="copy" id="copyCode">Copy</button></div><p style="margin:10px 0 0">Keep this code safe. Anyone with it can download this save file.</p></div>
+        <p class="status" id="uploadStatus" aria-live="polite"></p>
+      </article>
+      <article class="card">
+        <h3>🔑 Retrieve a save file</h3><p class="sub">Enter your recovery code to download your lists.</p>
+        <label for="recoveryCode" class="sub" style="display:block;margin-bottom:8px">Recovery code</label><input class="field" id="recoveryCode" placeholder="LST-XXXXXXXXXXXXXXX" maxlength="20" autocomplete="off" spellcheck="false">
+        <button class="btn wide" id="retrieveBtn">Find my save file</button>
+        <p class="status" id="retrieveStatus" aria-live="polite"></p>
+      </article>
+    </section>
+    <section class="card news"><div class="news-icon">📢</div><div><h3>Listly Cloud updates</h3><p>This is the beta launch page. News, release notes, and service announcements will appear here in a future update.</p></div></section>
+    <footer class="footer">Listly Cloud · Beta Test 1 · Keep your recovery code private.</footer>
+  </main>
+<script>
+(() => {
+  const fileInput=document.getElementById('file'),drop=document.getElementById('drop'),fileName=document.getElementById('fileName'),uploadBtn=document.getElementById('uploadBtn'),uploadStatus=document.getElementById('uploadStatus'),uploadResult=document.getElementById('uploadResult'),newCode=document.getElementById('newCode'),retrieveBtn=document.getElementById('retrieveBtn'),retrieveStatus=document.getElementById('retrieveStatus'),recoveryCode=document.getElementById('recoveryCode');
+  let selectedFile=null;
+  const setStatus=(el,msg,type='')=>{el.textContent=msg;el.className='status '+type};
+  function choose(file){selectedFile=file||null;uploadResult.classList.remove('show');if(!file){fileName.textContent='Drop your save file here';uploadBtn.disabled=true;return;}fileName.textContent=file.name;uploadBtn.disabled=false;setStatus(uploadStatus,'');}
+  fileInput.addEventListener('change',()=>choose(fileInput.files[0]));
+  for(const event of ['dragenter','dragover'])drop.addEventListener(event,e=>{e.preventDefault();drop.classList.add('drag')});
+  for(const event of ['dragleave','drop'])drop.addEventListener(event,e=>{e.preventDefault();drop.classList.remove('drag')});
+  drop.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f){choose(f);}});
+  uploadBtn.addEventListener('click',async()=>{
+    if(!selectedFile)return;
+    if(!selectedFile.name.toLowerCase().endsWith('.txt')){setStatus(uploadStatus,'Please choose a .txt file.','err');return;}
+    uploadBtn.disabled=true;setStatus(uploadStatus,'Checking and uploading your save file…');
+    try{const body=new FormData();body.append('file',selectedFile);const res=await fetch('/api/upload',{method:'POST',body});const data=await res.json();if(!res.ok)throw new Error(data.error||'Upload failed.');newCode.textContent=data.code;uploadResult.classList.add('show');setStatus(uploadStatus,'Upload complete! Save your recovery code.','ok');}
+    catch(err){setStatus(uploadStatus,err.message||'Something went wrong.','err');}
+    finally{uploadBtn.disabled=false;}
+  });
+  document.getElementById('copyCode').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(newCode.textContent);document.getElementById('copyCode').textContent='Copied!';setTimeout(()=>document.getElementById('copyCode').textContent='Copy',1400);}catch{setStatus(uploadStatus,'Select and copy the code manually.','err');}});
+  recoveryCode.addEventListener('input',()=>{recoveryCode.value=recoveryCode.value.toUpperCase().replace(/[^A-Z0-9-]/g,'');});
+  retrieveBtn.addEventListener('click',async()=>{
+    const code=recoveryCode.value.trim();if(!code){setStatus(retrieveStatus,'Enter your recovery code.','err');return;}
+    retrieveBtn.disabled=true;setStatus(retrieveStatus,'Looking for your save file…');
+    try{const res=await fetch('/api/retrieve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});if(!res.ok){let msg='Could not find that code.';try{msg=(await res.json()).error||msg;}catch{}throw new Error(msg);}const text=await res.text();const blob=new Blob([text],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Listly_Save.txt';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);setStatus(retrieveStatus,'Save file downloaded! Import it into Listly.','ok');}
+    catch(err){setStatus(retrieveStatus,err.message||'Something went wrong.','err');}
+    finally{retrieveBtn.disabled=false;}
+  });
+})();
+</script>
+</body>
+</html>
